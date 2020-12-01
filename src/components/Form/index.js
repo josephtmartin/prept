@@ -3,9 +3,9 @@ import data from '../../helpers/data/questionData';
 
 export default class Form extends Component {
   state = {
-    answer: this.props.card?.name || '',
+    answer: this.props.card?.answer || '',
     firebaseKey: this.props.card?.firebaseKey || '',
-    question: this.props.card?.imageUrl || '',
+    question: this.props.card?.question || '',
   }
 
   handleChange = (e) => {
@@ -23,10 +23,10 @@ export default class Form extends Component {
           this.props.onUpdate();
         });
     } else {
-      // data.updateFlashCard(this.state)
-      //   .then(() => {
-      //     this.props.onUpdate(this.state.firebaseKey);
-      //   });
+      data.updateFlashCard(this.state)
+        .then(() => {
+          this.props.onUpdate(this.state.firebaseKey);
+        });
     }
   }
 
